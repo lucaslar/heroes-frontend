@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import HeroesView from '@/views/HeroesView.vue'
-import HeroesOptionApiView from "@/views/HeroesOptionsApiView.vue";
+import HeroesOptionApiView from '@/views/HeroesOptionsApiView.vue'
+import HeroesViewWithRestDataView from '@/views/HeroesViewWithRestDataView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/heroes-oa',
       name: 'heroes-oa',
       component: HeroesOptionApiView
+    },
+    {
+      path: '/heroes-rest-api',
+      name: 'heroes-rest-api',
+      component: HeroesViewWithRestDataView
     }
   ]
 })

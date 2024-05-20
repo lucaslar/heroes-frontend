@@ -15,6 +15,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/heroes">Heroes (Composition API)</RouterLink>
         <RouterLink to="/heroes-oa">Heroes (Options API)</RouterLink>
+        <RouterLink to="/heroes-rest-api">Heroes (data from REST API)</RouterLink>
       </nav>
     </div>
   </header>
