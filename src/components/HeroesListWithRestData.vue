@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineAsyncComponent, onMounted, ref, type Ref} from 'vue'
+import { onMounted, ref, type Ref} from 'vue'
 import axios from 'axios'
 
 defineProps<{ title: string }>()
@@ -11,6 +11,8 @@ const nameField = ref('')
 const affiliationField = ref('')
 const heightField = ref()
 
+const url = import.meta.env.VITE_APP_BACKEND_BASE_URL
+
 function createHero(): void {
   const hero = {
     name: nameField.value,
@@ -19,21 +21,21 @@ function createHero(): void {
   }
 
   axios
-    .post<Hero>('http://localhost:8080/hero', hero)
+    .post<Hero>(`${url}/hero`, hero)
     .then((response) => heroes.value.push(response.data))
     .catch((error) => console.log(error))
 }
 
 function requestHeroes(): void {
   axios
-    .get<Hero[]>('http://localhost:8080/hero')
+    .get<Hero[]>(`${url}/hero`)
     .then((response) => (heroes.value = response.data))
     .catch((error) => console.log(error))
 }
 
 function removeHero(id: number): void {
   axios
-    .delete<void>(`http://localhost:8080/hero/${id}`)
+    .delete<void>(`${url}/hero/${id}`)
     .then(() => (heroes.value = heroes.value.filter((h) => h.id !== id)))
     .catch((error) => console.log(error))
 }
