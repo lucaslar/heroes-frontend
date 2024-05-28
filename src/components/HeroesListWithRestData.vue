@@ -21,21 +21,21 @@ function createHero(): void {
   }
 
   axios
-    .post<Hero>(`${url}/hero`, hero)
+    .post<Hero>(`${url}/heroes`, hero)
     .then((response) => heroes.value.push(response.data))
     .catch((error) => console.log(error))
 }
 
 function requestHeroes(): void {
   axios
-    .get<Hero[]>(`${url}/hero`)
+    .get<Hero[]>(`${url}/heroes`)
     .then((response) => (heroes.value = response.data))
     .catch((error) => console.log(error))
 }
 
 function removeHero(id: number): void {
   axios
-    .delete<void>(`${url}/hero/${id}`)
+    .delete<void>(`${url}/heroes/${id}`)
     .then(() => (heroes.value = heroes.value.filter((h) => h.id !== id)))
     .catch((error) => console.log(error))
 }
